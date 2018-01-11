@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="#{mbSessao.language}">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Testing layoutUnit behavior</title>
+        <style type="text/css">
+            .ui-layout-north {
+                z-index:20 !important;
+                overflow:visible !important;
+            }
+            .ui-layout-north .ui-layout-unit-content {
+                overflow:visible !important;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:layout id="layMain" fullPage="true" widgetVar="wdgLayMain">
+            <p:layoutUnit id="layNorth" position="north" resizable="false" 
+                          style="border-style: none; box-shadow: 1px 1px 10px grey;">
+                <h:form id="frmMenu">
+                    <p:menubar id="menuMain" widgetVar="wdgMenuMain" autoDisplay="false" style="float: left; border: 0!important;">
+                        <p:submenu id="subMenuTest" label="Test Submenu">
+                            <p:menuitem id="miTest1" value="Test1" />
+                            <p:menuitem id="miTest2" value="Test2" />
+                            <p:menuitem id="miTest3" value="Test3" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit id="layCenter" position="center" resizable="true" 
+                          style="border-style: none">    
+                <ui:insert id="uiInsertCenterContent" name="centerContent">Center content.</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit id="layWest" position="west"
+                          collapsible="true" collapseSize="1" collapsed="true" 
+                          effect="slide" effectSpeed="slow" 
+                          style="border-style: none; box-shadow: 1px 1px 10px grey;">
+                <ui:insert id="uiInsertWestMenu" name="westContent">West content.</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit id="laySouth" position="south" size="25" 
+                          collapsible="true" collapseSize="1" collapsed="true" 
+                          effect="slide" effectSpeed="slow" >
+                <ui:insert id="uiInsertSouthLayout" name="southContent">South content.</ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
